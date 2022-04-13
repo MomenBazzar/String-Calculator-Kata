@@ -1,5 +1,5 @@
 using Xunit;
-using System;
+
 namespace StringCalculatorKata.Tests;
 
 public class StringCalculatorTests
@@ -42,5 +42,15 @@ public class StringCalculatorTests
         int result = sut.Add("1,2,3,4");
 
         Assert.Equal(10, result);
+    }
+
+    [Fact]
+    public void AddWithNewLine_ReturnsSumOfNumbers()
+    {
+        StringCalculator sut = new StringCalculator();
+
+        int result = sut.Add("1,2\n3");
+
+        Assert.Equal(6, result);
     }
 }
