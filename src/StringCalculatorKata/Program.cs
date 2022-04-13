@@ -1,2 +1,9 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿namespace StringCalculatorKata;
+class Program
+{
+    public static void Main()
+    {
+        StringCalculator stringCalculator = new StringCalculator();
+        stringCalculator.Add("");
+    }
+}
