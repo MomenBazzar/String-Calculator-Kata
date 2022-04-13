@@ -53,4 +53,14 @@ public class StringCalculatorTests
 
         Assert.Equal(6, result);
     }
+
+    [Fact]
+    public void AddWithSpecificDelimiter_ReturnsSumOfNumbers()
+    {
+        StringCalculator sut = new StringCalculator();
+
+        int result = sut.Add("//;\n1;2;3");
+
+        Assert.Equal(6, result);
+    }
 }
