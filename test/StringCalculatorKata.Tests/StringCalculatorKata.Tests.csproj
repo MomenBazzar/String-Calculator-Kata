@@ -19,7 +19,9 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\..\src\StringCalculatorKata\StringCalculatorKata.scproj">
+    <ProjectReference Include="..\..\src\StringCalculatorKata\StringCalculatorKata.csproj" />
   </ItemGroup>
+
 </Project>
