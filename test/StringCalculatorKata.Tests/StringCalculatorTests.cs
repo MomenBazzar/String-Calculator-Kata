@@ -1,4 +1,5 @@
 using Xunit;
+using System;
 namespace StringCalculatorKata.Tests;
 
 public class StringCalculatorTests
@@ -14,7 +15,7 @@ public class StringCalculatorTests
     }
 
     [Fact]
-    public void AddStringWithOneNumber_ReturnsTheNumber()
+    public void AddWithOneNumber_ReturnsTheNumber()
     {
         StringCalculator sut = new StringCalculator();
 
@@ -22,14 +23,24 @@ public class StringCalculatorTests
 
         Assert.Equal(5, result);
     }
-    
+
     [Fact]
-    public void AddStringWithTwoNumbers_ReturnsSum()
+    public void AddWithTwoNumbers_ReturnsSumOfNumbers()
     {
         StringCalculator sut = new StringCalculator();
 
         int result = sut.Add("1,2");
 
         Assert.Equal(3, result);
+    }
+
+    [Fact]
+    public void AddWithUnknownAmountOfNumbers_ReturnsSumOfNumbers()
+    {
+        StringCalculator sut = new StringCalculator();
+
+        int result = sut.Add("1,2,3,4");
+
+        Assert.Equal(10, result);
     }
 }
