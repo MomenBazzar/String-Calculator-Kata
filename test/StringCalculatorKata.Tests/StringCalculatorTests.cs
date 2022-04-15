@@ -1,6 +1,8 @@
 using Xunit;
 using System;
 using FluentAssertions;
+using System.Text.RegularExpressions;
+
 namespace StringCalculatorKata.Tests;
 
 public class StringCalculatorTests
@@ -34,5 +36,17 @@ public class StringCalculatorTests
 
         result.Should().Throw<FormatException>()
               .WithMessage("Input String is not in a valid format");
+    }
+
+    [Theory]
+    [InlineData("3,-2")]
+    [InlineData("-1,-2,3,-4")]
+    public void AddGivenNegativeNumbers_ThrowsExceptionShowingNegatives(string inputNumbers)
+    {
+        StringCalculator sut = new StringCalculator();
+
+        var result = () => sut.Add(inputNumbers);
+        result.Should().Throw<FormatException>()
+              .Where(ex => ex.Message.StartsWith("Negatives are not allowed: "));
     }
 }
