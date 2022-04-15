@@ -13,7 +13,15 @@ public class StringCalculator
             delimiter = $"{inputNumbers[2]}";
             inputNumbers = inputNumbers.Replace($"//{delimiter}\n", "");
         }
-        var numbers = Regex.Split(inputNumbers, delimiter).Select(int.Parse);
-        return numbers.Sum();
+        try
+        {
+            var numbers = Regex.Split(inputNumbers, delimiter).Select(int.Parse);
+            return numbers.Sum();
+        }
+        catch
+        {
+            throw new FormatException("Input String is not in a valid format");
+        }
+
     }
 }
