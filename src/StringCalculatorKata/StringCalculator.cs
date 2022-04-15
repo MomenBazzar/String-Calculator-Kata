@@ -13,7 +13,7 @@ public class StringCalculator
             delimiter = $"{inputNumbers[2]}";
             inputNumbers = inputNumbers.Replace($"//{delimiter}\n", "");
         }
-        var numbers = Regex.Split(inputNumbers, delimiter).Select(int.Parse).ToList();
+        var numbers = Regex.Split(inputNumbers, delimiter).Select(int.Parse);
         return numbers.Sum();
     }
 }
