@@ -14,23 +14,24 @@ public class StringCalculator
             inputNumbers = inputNumbers.Replace($"//{delimiter}\n", "");
         }
 
-        IEnumerable<int>? numbers;
+        var numbers = Regex.Split(inputNumbers, delimiter).Select(int.Parse);;
         int sum;
         try
         {
-            numbers = Regex.Split(inputNumbers, delimiter).Select(int.Parse);
             sum = numbers.Sum();
         }
         catch
         {
             throw new FormatException("Input String is not in a valid format");
         }
-        
+
         var negatives = numbers.Where(n => n < 0);
         if (negatives.Any())
         {
             throw new FormatException($"Negatives are not allowed: {negatives.ShowElements()}");
         }
-        return sum;
+
+        var sumOfBigNumbers = numbers.Where(n => n > 1000).Sum();
+        return sum - sumOfBigNumbers;
     }
 }
