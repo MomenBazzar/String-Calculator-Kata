@@ -49,4 +49,15 @@ public class StringCalculatorTests
         result.Should().Throw<FormatException>()
               .Where(ex => ex.Message.StartsWith("Negatives are not allowed: "));
     }
+
+    [Theory]
+    [InlineData("2,1001,3", 5)]
+    public void AddGivenBigNumbers_ReturnsSumIgnoringBigNumbers(string inputNumbers, int expectedAnswer)
+    {
+        StringCalculator sut = new StringCalculator();
+
+        int result = sut.Add(inputNumbers);
+
+        Assert.Equal(expectedAnswer, result);
+    }
 }
